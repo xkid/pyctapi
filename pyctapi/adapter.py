@@ -8,7 +8,7 @@
 
 from ctypes import create_string_buffer
 
-from pyctapi import pyctapi
+from . import pyctapi
 
 class CTAPIFailedToConnect(Exception):
     def __init__(self, error):
@@ -83,7 +83,7 @@ class CTAPIAdapter:
         return buff_as_string
 
     def read_tag(self, tag_name):
-        value_buffer = create_string_buffer(b'0' * 8)
+        value_buffer = create_string_buffer(b'0' * 256)
         status_code = self._ctapi.ctTagRead(self._connection, tag_name, value_buffer)
         if status_code == pyctapi.CT_SUCCESS:
             return self._parse_buffer_to_value(value_buffer)

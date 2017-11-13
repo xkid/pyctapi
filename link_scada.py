@@ -14,7 +14,7 @@ SOME_CITECT_TAG_NAME = "DO0001"
 tag_dict = {}
 
 # Test using adapter as an object
-cti = adapter.CTAPIAdapter(IP_ADDRESS, CITECT_USERNAME, CITECT_PASSWORD,dll_path="7.5")
+cti = adapter.CTAPIAdapter(IP_ADDRESS, CITECT_USERNAME, CITECT_PASSWORD)
 cti.connect()
 print(cti.read_tag(SOME_CITECT_TAG_NAME))
 cti.write_tag(SOME_CITECT_TAG_NAME, 1)
@@ -36,7 +36,7 @@ def process_tag(tag):
     else:
         tag_dict[tag] = current
         print(current)
-        print(tag_dict)ain=True)
+        print(tag_dict)
 
 while True:
     process_tag("DO0001")
